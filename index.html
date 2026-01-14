@@ -1,258 +1,193 @@
+<!-- Enhanced stylish dark-themed portfolio with improved typography, animations, and layout -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Durga Vaishnavi Seshapu | Portfolio</title>
-
-  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      --bg: #0d0d0d;
-      --card: #161616;
-      --text: #eaeaea;
-      --muted: #a0a0a0;
-      --accent: #4f8cff;
+      --bg: #0b0f14;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22d3ee;
+      --accent-2: #a78bfa;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      background: var(--bg);
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(34,211,238,0.12), transparent 40%),
+                  radial-gradient(800px 400px at 90% 10%, rgba(167,139,250,0.12), transparent 40%),
+                  var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
     header {
-      padding: 60px 20px 40px;
-      text-align: center;
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,20,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-    }
-
-    header p {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 1.1rem;
-    }
-
     nav {
-      margin-top: 25px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      max-width: 1100px; margin: auto; padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
     nav a {
-      color: var(--text);
-      font-weight: 500;
-      transition: color 0.3s;
+      color: var(--muted); text-decoration: none; margin-left: 18px; font-weight: 500;
     }
+    nav a:hover { color: var(--text); }
 
-    nav a:hover {
-      color: var(--accent);
+    .container { max-width: 1100px; margin: auto; padding: 70px 20px; }
+
+    .hero {
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;
     }
-
-    section {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 60px 20px;
+    .badge {
+      display: inline-block; padding: 6px 12px; border-radius: 999px;
+      background: rgba(34,211,238,0.12); color: var(--accent); font-weight: 600; font-size: 13px;
     }
-
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      border-left: 4px solid var(--accent);
-      padding-left: 12px;
+    h1 { font-size: clamp(32px, 4vw, 46px); margin: 14px 0; }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
+    .subtitle { color: var(--muted); max-width: 520px; }
 
+    .cta { margin-top: 26px; }
+    .btn {
+      display: inline-block; padding: 12px 18px; border-radius: 10px; font-weight: 600;
+      text-decoration: none; margin-right: 12px; transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #020617;
+      box-shadow: 0 10px 30px rgba(34,211,238,0.25);
+    }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.15); color: var(--text);
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    section { margin-top: 90px; }
+    section h2 { font-size: 28px; margin-bottom: 24px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
     .card {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 22px; transition: transform .25s ease, border-color .25s ease;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(34,211,238,0.5); }
+
+    .skills span {
+      display: inline-block; margin: 6px 8px 0 0; padding: 6px 12px; border-radius: 999px;
+      background: rgba(167,139,250,0.15); color: #ddd; font-size: 13px;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-
-    /* Skills */
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
-    }
-
-    .skill {
-      background: #1e1e1e;
-      padding: 12px;
-      text-align: center;
-      border-radius: 8px;
-      font-size: 0.95rem;
-    }
-
-    /* Footer */
     footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--muted);
-      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 40px 20px; text-align: center; color: var(--muted);
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      section h2 {
-        font-size: 1.6rem;
-      }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header id="home">
-    <h1>Durga Vaishnavi Seshapu</h1>
-    <p>Aspiring Software Developer | Andhra Pradesh, India</p>
-
+  <header>
     <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#internships">Internships</a>
-      <a href="#projects">Projects</a>
-      <a href="#resume">Resume</a>
-      <a href="#contact">Contact</a>
+      <strong>Vaishnavi</strong>
+      <div>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#internships">Internships</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
   </header>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="card">
-      <p>
-        I am a 3rd year B.Tech Computer Science Engineering student at Swarnandhra College of Engineering and Technology.
-        I am building a strong foundation in software development with hands-on exposure to web technologies and data analytics.
-        My focus is on learning by doing, improving problem-solving skills, and preparing for real-world engineering roles.
-      </p>
-    </div>
-  </section>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">B.Tech CSE – 3rd Year</span>
+        <h1>Hi, I'm <span class="gradient-text">Durga Vaishnavi Seshapu</span></h1>
+        <p class="subtitle">Aspiring Data Analyst with hands-on experience in Excel, SQL, Python and Tableau. Focused on turning raw data into clear insights.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://drive.google.com/file/d/1RGIzoSE_E-v6yiIKidCH_nxOiutX-TTX/view" target="_blank">View Resume</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/durga-vaishnavi-seshapu" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Quick Info</h3>
+        <p>📍 Andhra Pradesh, India</p>
+        <p>📧 vaishnaviseshapu09@gmail.com</p>
+        <p>🎓 Swarnandhra College of Engineering and Technology</p>
+      </div>
+    </section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="skill">Python</div>
-      <div class="skill">Java</div>
-      <div class="skill">SQL</div>
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">JavaScript (Basics)</div>
-      <div class="skill">Data Analytics (Basics)</div>
-      <div class="skill">Tableau</div>
-    </div>
-  </section>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am a Computer Science undergraduate interested in data analytics and problem solving. I enjoy working with datasets, finding patterns, and presenting insights through clean visualizations.</p>
+    </section>
 
-  <!-- Internships -->
-  <section id="internships">
-    <h2>Internships</h2>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="card skills">
+        <span>Excel</span><span>SQL</span><span>Python</span><span>Pandas</span><span>Tableau</span><span>HTML</span><span>CSS</span>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>Data Analytics Intern – SmartBridge</h3>
-      <p><em>Tableau, Python, SQL | Present</em></p>
-      <p>
-        Working on data analysis tasks involving data cleaning, visualization, and basic insights using Tableau and Python.
-        Gaining practical exposure to structured datasets and analytical thinking.
-      </p>
-    </div>
+    <section id="internships">
+      <h2>Internships</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Data Analytics Intern – SmartBridge</h3>
+          <p>Worked on data cleaning, analysis, and visualization using Python, SQL, and Tableau.</p>
+        </div>
+        <div class="card">
+          <h3>Intern – Edunet Foundation</h3>
+          <p>Completed structured internship focused on foundational technical and analytical skills.</p>
+        </div>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>Intern – Edunet Foundation</h3>
-      <p><em>Completed</em></p>
-      <p>
-        Participated in foundational technical training and project-based learning activities focused on industry-relevant skills.
-      </p>
-    </div>
-  </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Todo CRUD App</h3>
+          <p>React.js based application implementing full CRUD functionality.</p>
+        </div>
+        <div class="card">
+          <h3>Flipkart Clone</h3>
+          <p>Frontend clone built using React.js focusing on UI structure and component design.</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
+    <section id="resume">
+      <h2>Resume</h2>
+      <a class="btn btn-primary" href="https://drive.google.com/file/d/1RGIzoSE_E-v6yiIKidCH_nxOiutX-TTX/view" target="_blank">Open Resume</a>
+    </section>
 
-    <div class="card">
-      <h3>Todo CRUD App</h3>
-      <p><em>React.js | Mini Project</em></p>
-      <p>
-        A basic task management application implementing Create, Read, Update, and Delete operations.
-        Built to understand component-based architecture, state management, and user interaction in React.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Flipkart Clone</h3>
-      <p><em>React.js | Major Project</em></p>
-      <p>
-        A front-end clone of the Flipkart e-commerce platform focusing on layout design, reusable components,
-        and responsive user interfaces using React.
-      </p>
-    </div>
-  </section>
-
-  <!-- Resume -->
-  <section id="resume">
-    <h2>Resume</h2>
-    <div class="card">
-      <p>
-        You can view or download my resume using the link below. It includes my education,
-        internships, skills, and project experience.
-      </p>
-      <p style="margin-top: 15px;">
-        <a href="https://drive.google.com/file/d/12zsh2r05GIjsvJTkaDpytalNVRAV90FS/view?usp=sharing" target="_blank" style="font-weight:600;">View Resume</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="card">
+    <section id="contact">
+      <h2>Contact</h2>
       <p>Email: <a href="mailto:vaishnaviseshapu09@gmail.com">vaishnaviseshapu09@gmail.com</a></p>
       <p>GitHub: <a href="https://github.com/vaishnavi2211-hash/fsd-task" target="_blank">github.com/vaishnavi2211-hash</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/durga-vaishnavi-seshapu" target="_blank">linkedin.com/in/durga-vaishnavi-seshapu</a></p>
-      <p>Location: Andhra Pradesh, India</p>
-    </div>
-  </section>
-
-  <footer> <a href="mailto:vaishnaviseshapu09@gmail.com">vaishnaviseshapu09@gmail.com</a></p>
-      <p>Location: Andhra Pradesh, India</p>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    © 2026 Durga Vaishnavi Seshapu. Built with honesty and intent.
+    © 2026 Durga Vaishnavi Seshapu
   </footer>
-
 </body>
 </html>
-
-
